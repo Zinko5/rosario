@@ -1,0 +1,638 @@
+/* Paleta de Colores y Variables */
+:root {
+    --bg-dark: #070913;
+    --bg-card: rgba(15, 23, 42, 0.45);
+    --border-color: rgba(255, 255, 255, 0.08);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-gold: #f59e0b;
+    --accent-gold-glow: rgba(245, 158, 11, 0.4);
+    --accent-blue: #6366f1;
+    --accent-blue-glow: rgba(99, 102, 241, 0.35);
+    --bead-inactive: #334155;
+    --bead-active: #f59e0b;
+    --bead-completed: #818cf8;
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fondos Decorativos */
+.background-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.glow-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.15;
+}
+
+.orb-1 {
+    top: -10%;
+    right: -10%;
+    width: 60vw;
+    height: 60vw;
+    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
+}
+
+.orb-2 {
+    bottom: -10%;
+    left: -10%;
+    width: 50vw;
+    height: 50vw;
+    background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+}
+
+/* Cabecera */
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cross-icon {
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    text-shadow: 0 0 10px var(--accent-gold-glow);
+}
+
+.day-badge {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: #a5b4fc;
+    padding: 0.4rem 1rem;
+    border-radius: 99px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+/* Contenedor Principal */
+.container {
+    flex: 1;
+    max-width: 95%;
+    width: 95%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 0;
+}
+
+/* Tarjetas (Glassmorphism) */
+.card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    display: none;
+    transition: var(--transition-smooth);
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+.card.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Pantalla de Bienvenida */
+.welcome-content {
+    max-width: 750px;
+    margin: auto;
+    text-align: center;
+}
+
+.subtitle {
+    display: inline-block;
+    color: var(--accent-gold);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.welcome-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.35rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.description {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    margin-bottom: 1.75rem;
+}
+
+.setup-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.5rem;
+    margin-bottom: 1.75rem;
+    text-align: left;
+}
+
+.setup-box h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+    color: #e2e8f0;
+}
+
+.day-select-wrapper {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.day-select-wrapper select {
+    width: 100%;
+    padding: 0.85rem 1.25rem;
+    background: #0f172a;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+    appearance: none;
+    transition: var(--transition-smooth);
+}
+
+.day-select-wrapper select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px var(--accent-blue-glow);
+}
+
+.day-select-wrapper::after {
+    content: "▼";
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    position: absolute;
+    right: 1.25rem;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.mysteries-preview {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.mysteries-preview ul {
+    list-style: none;
+    margin-top: 0.5rem;
+}
+
+.mysteries-preview li {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mysteries-preview li:last-child {
+    border-bottom: none;
+}
+
+.mysteries-preview li span {
+    color: var(--accent-gold);
+    font-weight: 600;
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    border: none;
+    font-family: inherit;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent-blue) 0%, #4f46e5 100%);
+    color: white;
+    box-shadow: 0 4px 20px var(--accent-blue-glow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Pantalla de Oración Guiada */
+.progress-container {
+    margin-bottom: 1.25rem;
+    width: 100%;
+}
+
+.progress-bar-wrapper {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 99px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-gold) 100%);
+    border-radius: 99px;
+    transition: width 0.4s ease;
+}
+
+.progress-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.phase-badge {
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    color: #fef08a;
+    padding: 0.2rem 0.75rem;
+    border-radius: 99px;
+    font-weight: 500;
+}
+
+#step-counter {
+    color: var(--text-secondary);
+}
+
+/* Grid de Rezo */
+.pray-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2rem;
+    align-items: stretch;
+    flex: 1;
+    min-height: 0; /* Permite que los contenedores hijos hagan shrink/grow correctamente */
+    width: 100%;
+}
+
+/* Visualización del Rosario */
+.rosary-visual-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    height: 100%;
+    min-height: 0;
+}
+
+.rosary-scroll-area {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 0;
+}
+
+#rosary-svg-container {
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
+}
+
+.rosary-hint {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    opacity: 0.7;
+}
+
+/* Estilos SVG de las Cuentas */
+.rosary-bead {
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.rosary-bead.inactive {
+    fill: var(--bead-inactive);
+    stroke: rgba(255, 255, 255, 0.1);
+}
+
+.rosary-bead.active {
+    fill: var(--bead-active);
+    stroke: #ffffff;
+    stroke-width: 2.5px;
+    filter: drop-shadow(0 0 8px var(--accent-gold-glow));
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(1.35);
+}
+
+.rosary-bead.completed {
+    fill: var(--bead-completed);
+    stroke: rgba(255, 255, 255, 0.2);
+}
+
+.rosary-chain {
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-dasharray: 4;
+}
+
+.rosary-cross {
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+
+.rosary-cross.inactive {
+    fill: #475569;
+    stroke: rgba(255, 255, 255, 0.15);
+}
+
+.rosary-cross.active {
+    fill: var(--accent-gold);
+    stroke: #ffffff;
+    stroke-width: 2px;
+    filter: drop-shadow(0 0 14px var(--accent-gold));
+    transform-box: fill-box;
+    transform-origin: center;
+    transform: scale(1.25);
+}
+
+.rosary-cross.completed {
+    fill: var(--bead-completed);
+    stroke: rgba(255, 255, 255, 0.3);
+}
+
+/* Guía de Oraciones */
+.prayer-guide-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    min-height: 0;
+    justify-content: space-between;
+}
+
+.instruction-box {
+    background: rgba(255, 255, 255, 0.015);
+    border-left: 3px solid var(--accent-gold);
+    padding: 0.75rem 1rem;
+    border-radius: 0 12px 12px 0;
+}
+
+.action-tag {
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.mystery-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    margin-top: 0.25rem;
+    color: var(--text-primary);
+}
+
+.mystery-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-top: 0.35rem;
+    line-height: 1.45;
+}
+
+.prayer-card {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 0;
+}
+
+.prayer-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 0.5rem;
+}
+
+.prayer-text-scroll {
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 0.5rem;
+    min-height: 0;
+}
+
+.prayer-text-scroll p {
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: #cbd5e1;
+    font-style: italic;
+}
+
+/* Scrollbar Personalizado */
+.prayer-text-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.prayer-text-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.prayer-text-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.prayer-text-scroll::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.navigation-controls {
+    display: flex;
+    gap: 1rem;
+}
+
+.navigation-controls button {
+    flex: 1;
+}
+
+/* Pantalla de Fin */
+.finish-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.blessing-cross {
+    font-size: 3.5rem;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 15px var(--accent-gold-glow);
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+.finish-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+}
+
+.quote-box {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 1.75rem;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.quote {
+    font-style: italic;
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-size: 1.05rem;
+    margin-bottom: 0.75rem;
+}
+
+.author {
+    font-size: 0.875rem;
+    color: var(--accent-gold);
+    font-weight: 500;
+}
+
+/* Pie de Página */
+.app-footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Animaciones */
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px var(--accent-gold-glow);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 25px var(--accent-gold);
+    }
+}
+
+/* Responsividad */
+@media (max-width: 850px) {
+    .pray-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .rosary-visual-container {
+        min-height: auto;
+        height: 280px;
+        padding: 1rem;
+    }
+
+    .rosary-scroll-area {
+        height: 220px;
+    }
+    
+    .prayer-guide-container {
+        min-height: auto;
+    }
+
+    .welcome-content h2 {
+        font-size: 2rem;
+    }
+}

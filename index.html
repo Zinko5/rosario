@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santo Rosario Interactivo - Guía Paso a Paso para Principiantes</title>
+    <meta name="description" content="Aprende a rezar el Santo Rosario de forma fácil, interactiva y paso a paso. Ideal para principiantes con oraciones completas y selección automática de misterios.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="logo">
+            <span class="cross-icon">†</span>
+            <h1>Santo Rosario</h1>
+        </div>
+        <div class="day-badge" id="current-day-badge">...</div>
+    </header>
+
+    <main class="container">
+        <!-- Pantalla de Bienvenida -->
+        <section id="screen-welcome" class="card active">
+            <div class="welcome-content">
+                <span class="subtitle">Guía interactiva paso a paso</span>
+                <h2>Aprende a rezar el Santo Rosario</h2>
+                <p class="description">Esta herramienta interactiva está diseñada como un medio de orden, estructura y entrenamiento mental. Utiliza este algoritmo visual como un método para asimilar una destreza espiritual, estructurar tus pensamientos en bloques lógicos diarios y adquirir una disciplina inquebrantable a través del rezo constante y consciente.</p>
+                
+                <div class="setup-box">
+                    <h3>Selecciona los misterios para hoy</h3>
+                    <div class="day-select-wrapper">
+                        <select id="day-selector" aria-label="Seleccionar día de la semana">
+                            <option value="lunes">Lunes (Misterios Gozosos)</option>
+                            <option value="martes">Martes (Misterios Dolorosos)</option>
+                            <option value="miercoles">Miércoles (Misterios Gloriosos)</option>
+                            <option value="jueves">Jueves (Misterios Luminosos)</option>
+                            <option value="viernes">Viernes (Misterios Dolorosos)</option>
+                            <option value="sabado">Sábado (Misterios Gozosos)</option>
+                            <option value="domingo">Domingo (Misterios Gloriosos)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mysteries-preview" id="mysteries-preview">
+                        <!-- Se llena dinámicamente -->
+                    </div>
+                </div>
+
+                <button id="btn-start" class="btn btn-primary">
+                    Comenzar a Rezar
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Pantalla de Oración Guiada -->
+        <section id="screen-pray" class="card">
+            <!-- Barra de Progreso y Fases -->
+            <div class="progress-container">
+                <div class="progress-bar-wrapper">
+                    <div class="progress-bar" id="progress-bar" style="width: 0%"></div>
+                </div>
+                <div class="progress-meta">
+                    <span id="phase-label" class="phase-badge">Inicio</span>
+                    <span id="step-counter">Paso 1 de 60</span>
+                </div>
+            </div>
+
+            <div class="pray-grid">
+                <!-- Visualización del Rosario (Esquema de Cuentas) -->
+                <div class="rosary-visual-container">
+                    <div class="rosary-scroll-area">
+                        <div id="rosary-svg-container"></div>
+                    </div>
+                    <div class="rosary-hint">Representación visual del Rosario</div>
+                </div>
+
+                <!-- Oración y Guía del Paso Actual -->
+                <div class="prayer-guide-container">
+                    <div class="instruction-box">
+                        <span class="action-tag" id="action-instruction">Sostén la Cruz</span>
+                        <h3 id="mystery-title" class="mystery-title"></h3>
+                        <p id="mystery-desc" class="mystery-description"></p>
+                    </div>
+
+                    <div class="prayer-card">
+                        <h4 id="prayer-name">Credo</h4>
+                        <div class="prayer-text-scroll">
+                            <p id="prayer-text">...</p>
+                        </div>
+                    </div>
+
+                    <div class="navigation-controls">
+                        <button id="btn-prev" class="btn btn-secondary">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+                            Anterior
+                        </button>
+                        <button id="btn-next" class="btn btn-primary">
+                            Siguiente
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pantalla de Finalización -->
+        <section id="screen-finish" class="card">
+            <div class="finish-content">
+                <div class="blessing-cross">†</div>
+                <h2>Has Terminado el Santo Rosario</h2>
+                <p class="description">Has completado todas las oraciones y misterios del Rosario con devoción. Que la paz del Señor te acompañe siempre.</p>
+                <div class="quote-box">
+                    <p class="quote">"El Rosario es un arma poderosa. Utilízala con confianza y te sorprenderás de los resultados."</p>
+                    <span class="author">— San Josemaría Escrivá de Balaguer</span>
+                    <p class="quote-context" style="text-align: justify; margin-top: 1rem; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);">Esta afirmación fue plasmada en el año 1931 dentro de su obra fundamental 'Santo Rosario', redactada en un contexto de altísima hostilidad social y persecución ideológica en España. Lejos de ser una declaración mística o abstracta, define el rezo bajo una estricta relación de causa y efecto: una disciplina operativa y un mecanismo de defensa diaria para templar el carácter y la voluntad individual frente al caos del entorno.</p>
+                </div>
+                <button id="btn-restart" class="btn btn-primary">Rezar de Nuevo</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>Santo Rosario Interactivo &copy; 2026. Diseñado para la oración reflexiva y la meditación.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
