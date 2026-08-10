@@ -501,12 +501,14 @@ function renderRosarySvg() {
             if (a < 10) currentAngle += 4.8;
         }
 
-        // Espacio vacío para el Gloria al final de la decena d
-        currentAngle += 10;
-        const angleSpace = (currentAngle) * (Math.PI / 180);
-        const sx = cx + rx * Math.cos(angleSpace);
-        const sy = cy + ry * Math.sin(angleSpace);
-        createBead(svg, svgNS, `bead-decena-space-${d}`, sx, sy, 2.2, false, true);
+        // Espacio vacío para el Gloria al final de la decena d (solo si no es la última decena d === 4)
+        if (d < 4) {
+            currentAngle += 10;
+            const angleSpace = (currentAngle) * (Math.PI / 180);
+            const sx = cx + rx * Math.cos(angleSpace);
+            const sy = cy + ry * Math.sin(angleSpace);
+            createBead(svg, svgNS, `bead-decena-space-${d}`, sx, sy, 2.2, false, true);
+        }
 
         // 2. Si no es la última decena, colocamos la Cuenta Separadora Marrón (Padre Nuestro)
         if (d < 4) {
@@ -534,7 +536,7 @@ function createBead(parent, ns, id, cx, cy, r, isLarge, isSpace = false) {
         circle.style.opacity = "0.3";
     } else if (isLarge) {
         circle.setAttribute("class", "rosary-bead inactive");
-        circle.style.fill = "#d97706"; // Color oro viejo
+        circle.style.fill = "var(--color-tertiary)";
     } else {
         circle.setAttribute("class", "rosary-bead inactive");
     }

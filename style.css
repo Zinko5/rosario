@@ -1,18 +1,28 @@
-/* Paleta de Colores y Variables */
+/* Paleta de Colores y Variables - Litografía Victoriana */
 :root {
-    --bg-dark: #070913;
-    --bg-card: rgba(15, 23, 42, 0.45);
-    --border-color: rgba(255, 255, 255, 0.08);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent-gold: #f59e0b;
-    --accent-gold-glow: rgba(245, 158, 11, 0.4);
-    --accent-blue: #6366f1;
-    --accent-blue-glow: rgba(99, 102, 241, 0.35);
-    --bead-inactive: #334155;
-    --bead-active: #f59e0b;
-    --bead-completed: #818cf8;
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Paleta Oficial */
+    --color-primary: #F0E3CE;    /* Aged Parchment */
+    --color-secondary: #0D0D15;  /* Ink Black */
+    --color-tertiary: #E85D35;   /* Vermillion */
+    --color-neutral: #223A70;    /* Navy */
+    --color-surface: #8B7355;    /* Warm Brown */
+    --color-accent: #D4A574;     /* Tan */
+    --color-charcoal: #4A4A4A;   /* Deep Contrast */
+    
+    /* Mapeo funcional */
+    --bg-dark: var(--color-secondary);
+    --bg-card: var(--color-primary);
+    --border-color: var(--color-surface);
+    --text-primary: var(--color-secondary);
+    --text-secondary: var(--color-neutral);
+    
+    /* Cuentas Rosario */
+    --bead-inactive: var(--color-surface);
+    --bead-active: var(--color-tertiary);
+    --bead-completed: var(--color-neutral);
+    
+    /* Física Spring */
+    --transition-smooth: all 480ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Reset General */
@@ -23,10 +33,13 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
+    font-family: 'IM Fell English', serif;
     background-color: var(--bg-dark);
-    color: var(--text-primary);
-    height: 100vh;
+    /* Fondo con viñeta (vignette) dramática */
+    background-image: radial-gradient(circle, rgba(139, 115, 85, 0.15) 0%, rgba(13, 13, 21, 0.95) 80%);
+    color: #F0E3CE;
+    min-height: 100dvh;
+    height: 100dvh;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -43,29 +56,14 @@ body {
     z-index: -1;
     overflow: hidden;
     pointer-events: none;
+    opacity: 0.12;
+    /* Efecto stipple de tinta sutil */
+    background-image: radial-gradient(rgba(240, 227, 206, 0.15) 1px, transparent 0);
+    background-size: 8px 8px;
 }
 
 .glow-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.15;
-}
-
-.orb-1 {
-    top: -10%;
-    right: -10%;
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
-}
-
-.orb-2 {
-    bottom: -10%;
-    left: -10%;
-    width: 50vw;
-    height: 50vw;
-    background: radial-gradient(circle, var(--accent-gold) 0%, transparent 70%);
+    display: none; /* Quitados los brillos neon modernos */
 }
 
 /* Cabecera */
@@ -73,11 +71,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5rem 2rem;
-    max-width: 1200px;
+    padding: 0.6rem 2rem;
+    max-width: 1350px;
     width: 100%;
     margin: 0 auto;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 2px double var(--color-accent);
 }
 
 .logo {
@@ -87,40 +85,39 @@ body {
 }
 
 .logo h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-family: 'Cinzel', serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+    text-transform: uppercase;
 }
 
 .cross-icon {
-    font-size: 1.5rem;
-    color: var(--accent-gold);
-    text-shadow: 0 0 10px var(--accent-gold-glow);
+    font-size: 1.85rem;
+    color: var(--color-tertiary);
+    text-shadow: none;
 }
 
 .day-badge {
-    background: rgba(99, 102, 241, 0.15);
-    border: 1px solid rgba(99, 102, 241, 0.3);
-    color: #a5b4fc;
-    padding: 0.4rem 1rem;
-    border-radius: 99px;
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-transform: capitalize;
+    background: transparent;
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    padding: 0.4rem 1.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
 }
 
 /* Contenedor Principal */
 .container {
     flex: 1;
-    max-width: 95%;
-    width: 95%;
+    max-width: 1350px;
+    width: 98%;
     margin: 0 auto;
-    padding: 0.5rem;
+    padding: 0.5rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -128,21 +125,40 @@ body {
     min-height: 0;
 }
 
-/* Tarjetas (Glassmorphism) */
+/* Tarjetas (Estilo Pergamino Antiguo con Borde Doble) */
 .card {
     background: var(--bg-card);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid var(--border-color);
-    border-radius: 24px;
+    background-image: 
+        radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0),
+        linear-gradient(to right, rgba(139, 115, 85, 0.05) 1px, transparent 0);
+    background-size: 16px 16px, 100% 100%;
+    border: 3px double var(--color-surface);
+    outline: 1px solid var(--color-secondary);
+    outline-offset: -6px;
+    border-radius: 8px;
+    color: var(--color-secondary);
     width: 100%;
-    padding: 1.5rem 2rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    padding: 1.25rem 2rem;
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.6),
+        inset 0 0 80px rgba(139, 115, 85, 0.15);
     display: none;
     transition: var(--transition-smooth);
     opacity: 0;
-    transform: translateY(15px);
+    transform: translateY(16px);
+    position: relative;
 }
+
+/* Detalles de las esquinas ornamentales */
+.card::before, .card::after {
+    content: "❖";
+    position: absolute;
+    color: var(--color-surface);
+    font-size: 0.85rem;
+    pointer-events: none;
+}
+.card::before { top: 12px; left: 12px; }
+.card::after { bottom: 12px; right: 12px; }
 
 .card.active {
     display: flex;
@@ -164,41 +180,53 @@ body {
 
 .subtitle {
     display: inline-block;
-    color: var(--accent-gold);
-    font-size: 0.9rem;
+    color: var(--color-tertiary);
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 2.5px;
     margin-bottom: 0.75rem;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .welcome-content h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.35rem;
-    margin-bottom: 1rem;
-    line-height: 1.2;
+    font-family: 'Cinzel', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    line-height: 1.3;
+    color: var(--color-secondary);
 }
 
 .description {
-    color: var(--text-secondary);
-    font-size: 1.05rem;
-    line-height: 1.55;
-    margin-bottom: 1.75rem;
+    color: var(--color-charcoal);
+    font-size: 1.1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    max-width: 72ch;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .setup-box {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 1.5rem;
-    margin-bottom: 1.75rem;
+    background: rgba(139, 115, 85, 0.08);
+    border: 1px solid var(--color-surface);
+    border-radius: 4px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.25rem;
     text-align: left;
 }
 
 .setup-box h3 {
-    font-size: 1.15rem;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
     margin-bottom: 1rem;
-    color: #e2e8f0;
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-surface);
+    padding-bottom: 0.5rem;
 }
 
 .day-select-wrapper {
@@ -209,12 +237,13 @@ body {
 .day-select-wrapper select {
     width: 100%;
     padding: 0.85rem 1.25rem;
-    background: #0f172a;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    color: var(--text-primary);
+    background: var(--color-primary);
+    border: 1.5px solid var(--color-surface);
+    border-radius: 4px;
+    color: var(--color-secondary);
     font-size: 1rem;
     font-family: inherit;
+    font-weight: 600;
     cursor: pointer;
     appearance: none;
     transition: var(--transition-smooth);
@@ -222,14 +251,14 @@ body {
 
 .day-select-wrapper select:focus {
     outline: none;
-    border-color: var(--accent-blue);
-    box-shadow: 0 0 0 3px var(--accent-blue-glow);
+    border-color: var(--color-neutral);
+    box-shadow: 0 0 0 3px rgba(34, 58, 112, 0.15);
 }
 
 .day-select-wrapper::after {
     content: "▼";
-    font-size: 0.75rem;
-    color: var(--text-secondary);
+    font-size: 0.7rem;
+    color: var(--color-surface);
     position: absolute;
     right: 1.25rem;
     top: 50%;
@@ -238,9 +267,15 @@ body {
 }
 
 .mysteries-preview {
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     line-height: 1.5;
-    color: var(--text-secondary);
+    color: var(--color-charcoal);
+}
+
+.mysteries-preview h4 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
 }
 
 .mysteries-preview ul {
@@ -250,7 +285,7 @@ body {
 
 .mysteries-preview li {
     padding: 0.4rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px dashed rgba(139, 115, 85, 0.3);
     display: flex;
     gap: 0.5rem;
 }
@@ -260,65 +295,74 @@ body {
 }
 
 .mysteries-preview li span {
-    color: var(--accent-gold);
-    font-weight: 600;
+    color: var(--color-tertiary);
+    font-weight: 700;
 }
 
-/* Botones */
+/* Botones estilo Victoriano */
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 12px;
+    padding: 0.8rem 2.2rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    border-radius: 4px;
     cursor: pointer;
     transition: var(--transition-smooth);
     border: none;
-    font-family: inherit;
+    text-transform: uppercase;
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--accent-blue) 0%, #4f46e5 100%);
-    color: white;
-    box-shadow: 0 4px 20px var(--accent-blue-glow);
+    background-color: var(--color-tertiary);
+    color: var(--color-primary);
+    border: 1px solid var(--color-secondary);
+    box-shadow: 0 4px 10px rgba(232, 93, 53, 0.15);
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+    transform: scale(1.03);
+    background-color: #d14c26; /* 8% darken */
+    box-shadow: 0 6px 15px rgba(232, 93, 53, 0.25);
+}
+
+.btn-primary:active {
+    transform: translateY(1px);
 }
 
 .btn-secondary {
-    background: rgba(255, 255, 255, 0.05);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
+    background: transparent;
+    color: var(--color-neutral);
+    border: 1.5px solid var(--color-neutral);
 }
 
 .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(34, 58, 112, 0.08);
 }
 
 /* Pantalla de Oración Guiada */
 .progress-container {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.5rem;
     width: 100%;
 }
 
 .progress-bar-wrapper {
-    height: 6px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 99px;
+    height: 8px;
+    background: rgba(139, 115, 85, 0.2);
+    border: 1px solid var(--color-surface);
+    border-radius: 0;
     overflow: hidden;
     margin-bottom: 0.5rem;
 }
 
 .progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-gold) 100%);
-    border-radius: 99px;
+    background: var(--color-neutral);
+    border-radius: 0;
     transition: width 0.4s ease;
 }
 
@@ -326,30 +370,33 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 0.875rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
 }
 
 .phase-badge {
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.2);
-    color: #fef08a;
-    padding: 0.2rem 0.75rem;
-    border-radius: 99px;
-    font-weight: 500;
+    background: transparent;
+    border: 1px solid var(--color-neutral);
+    color: var(--color-neutral);
+    padding: 0.2rem 0.8rem;
+    border-radius: 0;
+    letter-spacing: 1px;
 }
 
 #step-counter {
-    color: var(--text-secondary);
+    color: var(--color-surface);
+    letter-spacing: 1px;
 }
 
 /* Grid de Rezo */
 .pray-grid {
     display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 2rem;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 2.5rem;
     align-items: stretch;
     flex: 1;
-    min-height: 0; /* Permite que los contenedores hijos hagan shrink/grow correctamente */
+    min-height: 0;
     width: 100%;
 }
 
@@ -359,10 +406,10 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-    padding: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    background: rgba(139, 115, 85, 0.05);
+    border-radius: 4px;
+    padding: 1.5rem;
+    border: 1px solid var(--color-surface);
     height: 100%;
     min-height: 0;
 }
@@ -384,13 +431,16 @@ body {
 }
 
 .rosary-hint {
-    font-size: 0.75rem;
-    color: var(--text-secondary);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: var(--color-surface);
     margin-top: 0.5rem;
-    opacity: 0.7;
+    text-transform: uppercase;
 }
 
-/* Estilos SVG de las Cuentas */
+/* Estilos SVG de las Cuentas con Colores Vintage */
 .rosary-bead {
     transition: var(--transition-smooth);
     cursor: pointer;
@@ -398,27 +448,29 @@ body {
 
 .rosary-bead.inactive {
     fill: var(--bead-inactive);
-    stroke: rgba(255, 255, 255, 0.1);
+    stroke: var(--color-secondary);
+    stroke-width: 1px;
 }
 
 .rosary-bead.active {
     fill: var(--bead-active);
-    stroke: #ffffff;
-    stroke-width: 2.5px;
-    filter: drop-shadow(0 0 8px var(--accent-gold-glow));
+    stroke: var(--color-secondary);
+    stroke-width: 2px;
     transform-box: fill-box;
     transform-origin: center;
-    transform: scale(1.35);
+    transform: scale(1.4);
 }
 
 .rosary-bead.completed {
     fill: var(--bead-completed);
-    stroke: rgba(255, 255, 255, 0.2);
+    stroke: var(--color-secondary);
+    stroke-width: 1px;
 }
 
 .rosary-chain {
-    stroke: rgba(255, 255, 255, 0.12);
-    stroke-dasharray: 4;
+    stroke: var(--color-surface);
+    stroke-dasharray: 3 3;
+    stroke-width: 1.5px;
 }
 
 .rosary-cross {
@@ -427,82 +479,88 @@ body {
 }
 
 .rosary-cross.inactive {
-    fill: #475569;
-    stroke: rgba(255, 255, 255, 0.15);
+    fill: var(--color-surface);
+    stroke: var(--color-secondary);
+    stroke-width: 1.5px;
 }
 
 .rosary-cross.active {
-    fill: var(--accent-gold);
-    stroke: #ffffff;
+    fill: var(--color-tertiary);
+    stroke: var(--color-secondary);
     stroke-width: 2px;
-    filter: drop-shadow(0 0 14px var(--accent-gold));
     transform-box: fill-box;
     transform-origin: center;
-    transform: scale(1.25);
+    transform: scale(1.3);
 }
 
 .rosary-cross.completed {
     fill: var(--bead-completed);
-    stroke: rgba(255, 255, 255, 0.3);
+    stroke: var(--color-secondary);
+    stroke-width: 1.5px;
 }
 
 /* Guía de Oraciones */
 .prayer-guide-container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.75rem;
     height: 100%;
     min-height: 0;
     justify-content: space-between;
 }
 
 .instruction-box {
-    background: rgba(255, 255, 255, 0.015);
-    border-left: 3px solid var(--accent-gold);
-    padding: 0.75rem 1rem;
-    border-radius: 0 12px 12px 0;
+    background: rgba(139, 115, 85, 0.05);
+    border-left: 4px solid var(--color-tertiary);
+    padding: 0.5rem 1rem;
+    border-radius: 0 4px 4px 0;
 }
 
 .action-tag {
-    font-size: 0.8rem;
-    color: var(--accent-gold);
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    color: var(--color-tertiary);
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .mystery-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.35rem;
-    margin-top: 0.25rem;
-    color: var(--text-primary);
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-top: 0.2rem;
+    color: var(--color-secondary);
 }
 
 .mystery-description {
     font-size: 0.95rem;
-    color: var(--text-secondary);
-    margin-top: 0.35rem;
-    line-height: 1.45;
+    color: var(--color-charcoal);
+    margin-top: 0.3rem;
+    line-height: 1.4;
 }
 
 .prayer-card {
-    background: rgba(0, 0, 0, 0.25);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 16px;
-    padding: 1.25rem;
+    background: transparent;
+    border: 1px solid var(--color-surface);
+    border-radius: 4px;
+    padding: 1rem;
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
     min-height: 0;
 }
 
 .prayer-card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.15rem;
-    color: #e2e8f0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--color-neutral);
+    border-bottom: 1px solid var(--color-surface);
     padding-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .prayer-text-scroll {
@@ -513,28 +571,28 @@ body {
 }
 
 .prayer-text-scroll p {
-    font-size: 1.05rem;
-    line-height: 1.55;
-    color: #cbd5e1;
-    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: var(--color-secondary);
+    font-style: normal;
 }
 
-/* Scrollbar Personalizado */
+/* Scrollbar Personalizado estilo Vintage */
 .prayer-text-scroll::-webkit-scrollbar {
     width: 6px;
 }
 
 .prayer-text-scroll::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(139, 115, 85, 0.1);
 }
 
 .prayer-text-scroll::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+    background: var(--color-surface);
+    border-radius: 0;
 }
 
 .prayer-text-scroll::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.25);
+    background: var(--color-neutral);
 }
 
 .navigation-controls {
@@ -555,59 +613,70 @@ body {
 
 .blessing-cross {
     font-size: 3.5rem;
-    color: var(--accent-gold);
+    color: var(--color-tertiary);
     margin-bottom: 1rem;
-    text-shadow: 0 0 15px var(--accent-gold-glow);
     animation: pulseGlow 3s infinite ease-in-out;
 }
 
 .finish-content h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cinzel', serif;
     font-size: 2.25rem;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--color-secondary);
 }
 
 .quote-box {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 1.75rem;
+    background: rgba(139, 115, 85, 0.06);
+    border: 1.5px solid var(--color-surface);
+    border-radius: 4px;
+    padding: 2rem;
     margin-bottom: 2.5rem;
     text-align: center;
 }
 
 .quote {
     font-style: italic;
-    color: var(--text-primary);
-    line-height: 1.6;
-    font-size: 1.05rem;
+    color: var(--color-secondary);
+    line-height: 1.65;
+    font-size: 1.15rem;
     margin-bottom: 0.75rem;
 }
 
 .author {
-    font-size: 0.875rem;
-    color: var(--accent-gold);
-    font-weight: 500;
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    color: var(--color-tertiary);
+    font-weight: 700;
+}
+
+.quote-context {
+    text-align: justify;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--color-charcoal);
 }
 
 /* Pie de Página */
 .app-footer {
     text-align: center;
-    padding: 2rem;
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.3);
-    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 0.6rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: var(--color-surface);
+    border-top: 1px solid rgba(139, 115, 85, 0.2);
 }
 
 /* Animaciones */
 @keyframes pulseGlow {
     0%, 100% {
         transform: scale(1);
-        text-shadow: 0 0 10px var(--accent-gold-glow);
     }
     50% {
-        transform: scale(1.05);
-        text-shadow: 0 0 25px var(--accent-gold);
+        transform: scale(1.08);
     }
 }
 
@@ -615,17 +684,17 @@ body {
 @media (max-width: 850px) {
     .pray-grid {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.25rem;
     }
     
     .rosary-visual-container {
         min-height: auto;
-        height: 280px;
-        padding: 1rem;
+        height: 240px;
+        padding: 0.75rem;
     }
 
     .rosary-scroll-area {
-        height: 220px;
+        height: 190px;
     }
     
     .prayer-guide-container {
@@ -633,6 +702,134 @@ body {
     }
 
     .welcome-content h2 {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 }
+
+@media (max-width: 600px) {
+    body {
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+    }
+
+    .container {
+        height: auto;
+        padding: 0.5rem;
+    }
+
+    .app-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        text-align: center;
+    }
+
+    .logo h1 {
+        font-size: 1.35rem;
+    }
+
+    .day-badge {
+        font-size: 0.65rem;
+        padding: 0.25rem 0.75rem;
+    }
+
+    .card {
+        padding: 1rem 0.75rem;
+        min-height: auto;
+        flex: none;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .welcome-content h2 {
+        font-size: 1.45rem;
+    }
+
+    .description {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+    }
+
+    .setup-box {
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .day-select-wrapper select {
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Reducir el gráfico del rosario en móvil vertical para dar más espacio a la oración */
+    .rosary-visual-container {
+        height: 180px;
+        padding: 0.5rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .rosary-scroll-area {
+        height: 140px;
+        width: 100%;
+    }
+
+    .mystery-title {
+        font-size: 1.05rem;
+    }
+
+    .mystery-description {
+        font-size: 0.85rem;
+    }
+
+    .prayer-card {
+        padding: 0.75rem;
+        min-height: 180px; /* Asegura un tamaño mínimo de lectura */
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .prayer-text-scroll p {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .navigation-controls {
+        gap: 0.5rem;
+        width: 100%;
+    }
+
+    .btn {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+
+    .quote-box {
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .quote {
+        font-size: 1rem;
+    }
+
+    .quote-context {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .btn {
+        padding: 0.5rem 0.5rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .logo h1 {
+        font-size: 1.15rem;
+    }
+}
+
+
