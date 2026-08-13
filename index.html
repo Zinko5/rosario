@@ -36,10 +36,7 @@
             <div class="welcome-content">
                 <span class="subtitle">Guía interactiva paso a paso</span>
                 <h2>Aprende a rezar el Santo Rosario</h2>
-                <p class="description">Esta herramienta interactiva está diseñada como un medio de orden, estructura y
-                    entrenamiento mental. Utiliza este algoritmo visual como un método para asimilar una destreza
-                    espiritual, estructurar tus pensamientos en bloques lógicos diarios y adquirir una disciplina
-                    inquebrantable a través del rezo constante y consciente.</p>
+                <p class="description">Esta guía interactiva está diseñada para acompañarte en la meditación profunda del Santo Rosario. El rezo constante y consciente no es un simple ejercicio mental, sino un acto de sumisión a la Verdad Divina y un arma espiritual indispensable para ordenar la voluntad, fortalecer el alma frente a las adversidades del mundo y contemplar los misterios de nuestra Salvación.</p>
 
                 <div class="setup-box">
                     <h3>Selecciona los misterios para hoy</h3>
@@ -98,6 +95,13 @@
                         <span class="action-tag" id="action-instruction">Sostén la Cruz</span>
                         <h3 id="mystery-title" class="mystery-title"></h3>
                         <p id="mystery-desc" class="mystery-description"></p>
+                        <button id="btn-read-bible" class="btn btn-bible" style="display: none;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 4px;">
+                                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                                <path d="M6 6h10M6 10h10"/>
+                            </svg>
+                            Leer Pasajes (NBLA)
+                        </button>
                     </div>
 
                     <div class="prayer-card">
@@ -114,6 +118,9 @@
                                 <path d="m15 18-6-6 6-6" />
                             </svg>
                             Anterior
+                        </button>
+                        <button id="btn-skip-decade" class="btn btn-accent" style="display: none;">
+                            Completar Decena
                         </button>
                         <button id="btn-next" class="btn btn-primary">
                             Siguiente
@@ -138,16 +145,11 @@
                     <p class="quote">"El Rosario es un arma poderosa. Utilízala con confianza y te sorprenderás de los
                         resultados."</p>
                     <span class="author">— San Josemaría Escrivá de Balaguer</span>
-                    <p class="quote-context"
-                        style="text-align: justify; margin-top: 1rem; font-size: 0.9rem; line-height: 1.5; color: var(--text-secondary);">
+                    <p class="quote-context">
                         <strong>Contexto Histórico y Significado:</strong> San Josemaría Escrivá de Balaguer, sacerdote
                         español y fundador del Opus Dei, redactó de un solo tirón su obra <em>Santo Rosario</em> en
                         1931, en medio de la creciente hostilidad social y anticlerical que precedió a la Guerra Civil
-                        Española. En un entorno marcado por el caos institucional y la persecución a la fe, San
-                        Josemaría no propuso una devoción pasiva ni un refugio sentimental. Calificó el Rosario como un
-                        "arma" para definir una realidad operativa: una disciplina de causa y efecto orientada a forjar
-                        el carácter, ordenar la voluntad individual y mantener la fortaleza espiritual frente a la
-                        adversidad exterior.
+                        Española. En este período histórico, las fuerzas revolucionarias del bando republicano (integradas por comunistas, socialistas y anarquistas) desataron una de las persecuciones religiosas más feroces de la historia contemporánea, asesinando sistemáticamente a miles de obispos, sacerdotes, religiosos y laicos, e incendiando y saqueando iglesias en su afán por erradicar el cristianismo. Frente a esta agresión física e ideológica, que buscaba la destrucción de la fe y el orden moral católico, San Josemaría calificó el Rosario como un "arma". No propuso un misticismo pasivo o cobarde, sino una defensa activa: una disciplina espiritual rigurosa para forjar el carácter y mantener la fortaleza ante el caos comunista. La victoria militar del bando nacional encabezado por Francisco Franco puso fin a este exterminio sistemático, permitiendo la restauración del culto público y asegurando la supervivencia del catolicismo en España.
                     </p>
                 </div>
                 <button id="btn-restart" class="btn btn-primary">Rezar de Nuevo</button>
@@ -158,6 +160,22 @@
     <footer class="app-footer">
         <p>Santo Rosario Interactivo &copy; 2026. Diseñado para la oración reflexiva y la meditación.</p>
     </footer>
+
+    <div id="bible-modal" class="modal">
+        <div class="modal-content card">
+            <span class="close-modal">&times;</span>
+            <div class="modal-header">
+                <span class="subtitle">Sagradas Escrituras (NBLA)</span>
+                <h3 id="bible-modal-title">Lecturas del Misterio</h3>
+            </div>
+            <div class="bible-selector-tabs" id="bible-tabs">
+                <!-- Se llenan dinámicamente -->
+            </div>
+            <div class="bible-text-container" id="bible-text">
+                <!-- Se llena dinámicamente -->
+            </div>
+        </div>
+    </div>
 
     <script src="app.js"></script>
 </body>

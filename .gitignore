@@ -1,0 +1,5 @@
+# Ignorar conocimientos y notas internas
+conocimientos.md
+
+# Ignorar archivos y scripts temporales de desarrollo
+scratch/
