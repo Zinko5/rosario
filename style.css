@@ -933,37 +933,44 @@ body {
     gap: 0.5rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid rgba(139, 115, 85, 0.2);
-    padding-bottom: 0.5rem;
+    padding: 0.2rem 0.2rem 0.75rem 0.2rem; /* Espaciado superior y lateral de resguardo */
     overflow-x: auto;
+    overflow-y: hidden; /* Previene barras verticales */
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: thin; /* Firefox: barra delgada */
-    scrollbar-color: var(--color-surface) rgba(139, 115, 85, 0.1); /* Firefox: tirador y pista */
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-surface) rgba(139, 115, 85, 0.1);
+    min-height: 3rem; /* Altura mínima controlada para evitar colapso vertical */
+    align-items: center; /* Centrado vertical de los flex-items */
 }
 .bible-selector-tabs::-webkit-scrollbar {
-    height: 3px; /* Muy delgada y elegante */
+    height: 3px;
 }
 .bible-selector-tabs::-webkit-scrollbar-track {
-    background: rgba(139, 115, 85, 0.05); /* Pista casi invisible */
+    background: rgba(139, 115, 85, 0.05);
 }
 .bible-selector-tabs::-webkit-scrollbar-thumb {
-    background: var(--color-surface); /* Tirador warm brown */
+    background: var(--color-surface);
     border-radius: 1.5px;
 }
 .bible-selector-tabs::-webkit-scrollbar-thumb:hover {
-    background: var(--color-neutral); /* Destaca al interactuar */
+    background: var(--color-neutral);
 }
 .bible-tab {
     flex-shrink: 0;
     background: transparent;
     border: 1px solid var(--color-surface);
     color: var(--color-surface);
-    padding: 0.35rem 0.75rem;
+    padding: 0.4rem 0.75rem;
     font-size: 0.8rem;
     font-family: 'Cinzel', serif;
     cursor: pointer;
     border-radius: 3px;
     transition: var(--transition-smooth);
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .bible-tab:hover {
     background: rgba(139, 115, 85, 0.08);
